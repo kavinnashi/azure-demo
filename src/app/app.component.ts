@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, HostListener } from '@angular/core';
+import {AddToHomeScreenServiceService} from './add-to-home-screen-service.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'azure-login';
+  @HostListener('window:onload', ['$event'])
+  onEventFire(e: any) {
+    this.a2hs.deferredPrompt = e;
+  }
+  constructor(
+   
+    private a2hs: AddToHomeScreenServiceService
+   ) {
+    this.a2hs.deferredPrompt = "e";
+   }
+   
+
 }
